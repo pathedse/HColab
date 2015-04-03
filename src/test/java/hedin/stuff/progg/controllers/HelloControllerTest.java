@@ -19,7 +19,7 @@ public class HelloControllerTest extends TestCase {
 	public void testWorld(){
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("Hello","World");
-		map.put("Presented by", "Patrik & THE king of Sweden Niclas");
+		map.put("Presented by", "Patrik, Niclas And XXXXXXXX");
 		String expectedResult = gson.toJson(map);
 		HelloController controller = new HelloController();
 		String s = controller.world();
