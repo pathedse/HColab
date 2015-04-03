@@ -26,7 +26,7 @@ public class HelloController {
 	public String world(){
 		HashMap<String,String> map = new HashMap<String,String>();
 		map.put("Hello","World");
-		map.put("Presented by", "Patrik");
+		map.put("Presented by", "Patrik & THE king of Sweden Niclas");
 		
 		return gson.toJson(map);
 	}
