@@ -10,9 +10,22 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	<servlet>
+		<!-- To prevent jetty from locking resources in filesystem -->
+		<servlet-name>default</servlet-name>
+		<servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
+		<init-param>
+			<param-name>useFileMappedBuffer</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>app</servlet-name>
 		<url-pattern>/app/*</url-pattern>
 	</servlet-mapping>
+	
+	
 </web-app>
