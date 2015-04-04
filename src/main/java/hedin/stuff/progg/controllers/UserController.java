@@ -2,13 +2,11 @@ package hedin.stuff.progg.controllers;
 
 import java.util.HashMap;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +35,7 @@ public class UserController {
 		} else {
 			map.put("status","failed password");
 		}
-		return gson.toJson(map);	
+		return gson.toJson(map);
 	}
 	
 	@RequestMapping(value="whoami")
