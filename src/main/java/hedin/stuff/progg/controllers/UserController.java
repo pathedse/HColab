@@ -2,7 +2,6 @@ package hedin.stuff.progg.controllers;
 
 import java.util.HashMap;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
