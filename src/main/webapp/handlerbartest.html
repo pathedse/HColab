@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="/resources/jslib/handlebars-v3.0.0.js"></script>
+	<script src="/resources/jslib/jquery-1.11.2.js"></script>
+	
+	<script>
+	$(document).ready(function(){
+		$.get('/resources/templates/org.hbs', function(data){
+			var template = Handlebars.compile(data);
+			var context = { orgs : [
+				{id: 12, name:'Biff på tallrik',description:'Vi server gott kött med bea och pommes'},
+				{id: 13, name:'Burgare i semla', description:'Vi serverar hamburgare på finskt vis'}
+			]};
+			$('#content').html(template(context));
+			$('.openOrg').click(function(){
+				window.alert('You clicked it');
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1> Hello World </h1>
+	
+	<h2>Render Content</h2>
+	
+	<div id="content" style="border: black solid;">
+	</div>
+	
+</body>
+</html>

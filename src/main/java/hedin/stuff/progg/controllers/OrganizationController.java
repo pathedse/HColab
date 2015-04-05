@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 
@@ -32,6 +33,13 @@ public class OrganizationController {
 		Organisation o = new Organisation("asjld2", "Biff på tallrik", "Vi lagar god man på tallrik");
 		
 		return gson.toJson(o);
+	}
+	
+	@RequestMapping(value="/start")
+	public ModelAndView organisationStartPage(){
+		ModelAndView mav = new ModelAndView("org");
+		mav.addObject("org", gson.toJson(new Organisation("23", "BurgarKedjan", "En restaurangkedja med inrikting på hamburgare")));
+		return mav;
 	}
 	
 	@RequestMapping(value="/list")
