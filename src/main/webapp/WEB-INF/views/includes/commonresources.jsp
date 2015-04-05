@@ -5,5 +5,3 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap-theme.min.css">
-
-<script type="text/javascript" src="/resources/main.js"></script>
