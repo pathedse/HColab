@@ -8,25 +8,13 @@
 
 <%@include file="includes/commonresources.jsp"%>
 
-<script src="/resources/jslib/angular.js"></script>
+
+
 
 <script>
 	window.dataObject = {
-			organization : {
-				name : 'BurgarKedjan',
-				description : 'Fokuserad på att skapa smaskiga burgare',
-				company : [
-					{
-						companyId : 'bk01',
-						name : 'Kalles färska burgare',
-						location : 'Gamla stan'},
-					{
-						companyId : 'bk02',
-						name : 'Bennys Burger',
-						location : 'Vasastan'
-					}
-				]
-		}
+			organization :  ${org}
+		
 	};
 
 	angular.module('orgApp',[])
@@ -66,7 +54,12 @@
 				// TODO: Call server
 			};
 		});
+	$(function(){
+		$( "#date" ).datepicker();
+	});
+	
 	</script>
+	
 </head>
 <body>
 
@@ -91,17 +84,20 @@
 					<button ng-click="show = false" class="btn btn-primary">Cancel</button>
 				</form>
 			</div>
-		</div>
-
-		<div ng-controller="OrganizationListController as orgList">
-			<div ng-repeat="org in orgz">
 			
+		</div>
+		<input type="text" id="date" />
+		<div ng-controller="OrganizationListController as org">
+			<div ng-repeat="org in orgz">			
 				<h1>Organization {{org.name}}</h1>
+				<div class="orgToolBar">
+				<span class="editOrg" orgId="{{org.id}}">Edit</span>
+				</div>
 				<i>{{org.description}}</i>
 				<div>
-					<div ng-repeat="company in org.company">
-						<h4 data-id="{{company.companyId}}">{{company.name}}</h4>
-						<span>Located at {{company.location}}</span>
+					<div ng-repeat="company in org.businesUnits">
+						<h4 data-id="{{company.id}}">{{company.name}}</h4>
+						<span>Located at {{company.description}}</span>
 					</div>
 				</div>
 			</div>
@@ -109,11 +105,44 @@
 
 
 	</div>
-
+	
+	
+<div id="dialog" title="Create new user">
+  <p class="validateTips">All form fields are required.</p>
+ 
+  <form>
+    <fieldset>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+ 
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+    </fieldset>
+  </form>
+</div>
 
 	<%@include file="includes/commonfoot.jsp"%>
 	<script>
 		var dataObj = ${org};	
+	</script>
+	<script type="text/javascript">
+	 $(function() {
+		 $( "#dialog" ).dialog({
+			  dialogClass: "no-close",
+			  buttons: [
+			    {
+			      text: "OK",
+			      click: function() {
+			        $( this ).dialog( "close" );
+			      }
+			    }
+			  ]
+			});
+		  });
 	</script>
 </body>
 </html>

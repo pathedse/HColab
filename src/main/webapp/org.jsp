@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html ng-app="orgApp">
 <head>
@@ -9,20 +10,7 @@
 	
 	<script>
 	window.dataObject = {
-			organisation : {
-				name : 'BurgarKedjan',
-				company : [
-					{
-						companyId : 'bk01',
-						name : 'Kalles färska burgare',
-						location : 'Gamla stan'},
-					{
-						companyId : 'bk02',
-						name : 'Bennys Burger',
-						location : 'Vasastan'
-					}
-				]
-		}
+			organisation : <c:out value="${org}"/>
 	};
 
 	angular.module('orgApp',[])
